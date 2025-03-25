@@ -39,28 +39,25 @@ pipeline {
 
                     # Run commands as the specified user
                     sudo -u $USER bash <<EOF
+cd $API_SRC
 
-                    # Navigate to API source code
-                    cd $API_SRC
+# Restore, build, and publish
+dotnet restore
+dotnet build --configuration Release
+dotnet publish -c Release -o $DEPLOY_DIR
 
-                    # Restore, build, and publish
-                    dotnet restore
-                    dotnet build --configuration Release
-                    dotnet publish -c Release -o $DEPLOY_DIR
+# Navigate to deployment folder
+cd $DEPLOY_DIR
 
-                    # Navigate to deployment folder
-                    cd $DEPLOY_DIR
+# Set production environment
+export ASPNETCORE_ENVIRONMENT=Production
 
-                    # Set production environment
-                    export ASPNETCORE_ENVIRONMENT=Production
+# Stop any existing running API process
+pkill -f "dotnet API.Core.dll" || true
 
-                    # Stop any existing running API process
-                    pkill -f "dotnet API.Core.dll" || true
-
-                    # Start new instance in background
-                    nohup dotnet API.Core.dll > $LOG_FILE 2>&1 &
-
-                    EOF
+# Start new instance in background
+nohup dotnet API.Core.dll > $LOG_FILE 2>&1 &
+EOF
                     '''
                 }
             }
