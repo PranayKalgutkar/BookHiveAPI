@@ -25,6 +25,7 @@ if (enableSwagger)
     app.UseSwagger();
     app.UseSwaggerUI();
 }
+//Jenkins Password = 1368f4f2dd6d4456903dbae75686965a
 
 app.UseHttpsRedirection();
 
