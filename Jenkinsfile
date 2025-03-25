@@ -4,7 +4,7 @@ pipeline {
     stages {
         stage('Checkout') {
             steps {
-                git 'https://github.com/PranayKalgutkar/BookHiveAPI.git'
+                git branch: 'Stage', url: 'https://github.com/PranayKalgutkar/BookHiveAPI.git'
             }
         }
 
