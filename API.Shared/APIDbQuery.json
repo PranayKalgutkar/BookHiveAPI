@@ -1,0 +1,14 @@
+{
+    "exclude": [
+      "**/bin",
+      "**/bower_components",
+      "**/jspm_packages",
+      "**/node_modules",
+      "**/obj",
+      "**/platforms"
+    ],
+    "AddBookWithCopies": {
+      "Type": "Function",
+      "Query": "SELECT add_book_with_copies(@p_title, @p_author, @p_genre, @p_language, @p_isbn, @p_created_by, @p_number_of_copies)"
+    }
+}

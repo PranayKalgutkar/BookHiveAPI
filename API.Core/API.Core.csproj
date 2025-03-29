@@ -8,7 +8,16 @@
 
   <ItemGroup>
     <PackageReference Include="Microsoft.AspNetCore.OpenApi" Version="8.0.12" />
+    <PackageReference Include="NLog" Version="5.4.0" />
+    <PackageReference Include="NLog.Database" Version="5.4.0" />
+    <PackageReference Include="NLog.Web.AspNetCore" Version="5.4.0" />
+    <PackageReference Include="Npgsql" Version="9.0.3" />
     <PackageReference Include="Swashbuckle.AspNetCore" Version="6.6.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\API.Domain\API.Domain.csproj" />
+    <ProjectReference Include="..\API.Infrastructure\API.Infrastructure.csproj" />
   </ItemGroup>
 
 </Project>
