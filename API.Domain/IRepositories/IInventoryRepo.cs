@@ -8,6 +8,8 @@ namespace API.Domain.IRepositories
 {
     public interface IInventoryRepo
     {
-        Task<Book> AddBookWithCopies(Book newBook);
+        Task<BookCopy> AddBookWithCopies(BookCopy newBook);
+        Task<IEnumerable<BookStatus>> GetBooksByTitleAndStatus(string? title, string? status);
+        Task<IEnumerable<BookStatus>> GetBooksByFilter(BookFilter bookFilter);
     }
 }

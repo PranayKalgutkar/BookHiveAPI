@@ -5,7 +5,7 @@ using System.Threading.Tasks;
 
 namespace API.Domain.DTOs
 {
-    public class Book : BookBase
+    public class Book
     {
         public int BookId { get; set; }
         public string? Title { get; set; }

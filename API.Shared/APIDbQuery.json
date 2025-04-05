@@ -1,14 +1,22 @@
 {
-    "exclude": [
-      "**/bin",
-      "**/bower_components",
-      "**/jspm_packages",
-      "**/node_modules",
-      "**/obj",
-      "**/platforms"
-    ],
-    "AddBookWithCopies": {
-      "Type": "Function",
-      "Query": "SELECT add_book_with_copies(@p_title, @p_author, @p_genre, @p_language, @p_isbn, @p_created_by, @p_number_of_copies)"
-    }
+  "exclude": [
+    "**/bin",
+    "**/bower_components",
+    "**/jspm_packages",
+    "**/node_modules",
+    "**/obj",
+    "**/platforms"
+  ],
+  "AddBookWithCopies": {
+    "Type": "Function",
+    "Query": "SELECT add_book_with_copies(@p_title, @p_author, @p_genre, @p_book_language, @p_isbn, @p_created_by, @p_number_of_copies)"
+  },
+  "GetBooksByTitleAndStatus": {
+    "Type": "Function",
+    "Query": "SELECT * FROM get_books_by_title_and_status(@p_title, @p_status)"
+  },
+  "GetBooksByFilter": {
+    "Type": "Function",
+    "Query": "SELECT * FROM public.get_books_by_filter(@p_search_text::TEXT, @p_title::TEXT, @p_author::TEXT, @p_genre::TEXT, @p_status::TEXT, @p_sort_column::TEXT, @p_sort_order::TEXT, @p_page_index::INT, @p_page_size::INT)"
+  }
 }

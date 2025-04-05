@@ -9,6 +9,8 @@ namespace API.Domain.IDALs
 {
     public interface IInventoryDAL
     {
-        Task<ApiResponse<Book>> AddBookWithCopies(Book newBook);
+        Task<ApiResponse<BookCopy>> AddBookWithCopies(BookCopy newBook);
+        Task<ApiResponse<IEnumerable<BookStatus>>> GetBooksByTitleAndStatus(string? title, string? status);
+        Task<ApiResponse<IEnumerable<BookStatus>>> GetBooksByFilter(BookFilter bookFilter);
     }
 }

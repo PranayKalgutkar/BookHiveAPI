@@ -19,7 +19,7 @@ namespace API.Infrastructure.DALs
             _logger = logger;
             _helper = helper;
         }
-        public async Task<ApiResponse<Book>> AddBookWithCopies(Book newBook)
+        public async Task<ApiResponse<BookCopy>> AddBookWithCopies(BookCopy newBook)
         {
             var correlationId = Guid.NewGuid();
             try
@@ -30,7 +30,37 @@ namespace API.Infrastructure.DALs
             catch (Exception ex)
             {
                 _logger.LogError(ex, $"{correlationId}");
-                return await _helper.GenerateResponse<Book>(null, correlationId, HttpStatusCode.InternalServerError);
+                return await _helper.GenerateResponse<BookCopy>(null, correlationId, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public async Task<ApiResponse<IEnumerable<BookStatus>>> GetBooksByFilter(BookFilter bookFilter)
+        {
+            var correlationId = Guid.NewGuid();
+            try
+            {
+                var result = await _repo.GetBooksByFilter(bookFilter);
+                return await _helper.GenerateResponse(result, correlationId, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{correlationId}");
+                return await _helper.GenerateResponse<IEnumerable<BookStatus>>(null, correlationId, HttpStatusCode.InternalServerError);
+            }
+        }
+
+        public async Task<ApiResponse<IEnumerable<BookStatus>>> GetBooksByTitleAndStatus(string? title, string? status)
+        {
+            var correlationId = Guid.NewGuid();
+            try
+            {
+                var result = await _repo.GetBooksByTitleAndStatus(title, status);
+                return await _helper.GenerateResponse(result, correlationId, HttpStatusCode.OK);
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError(ex, $"{correlationId}");
+                return await _helper.GenerateResponse<IEnumerable<BookStatus>>(null, correlationId, HttpStatusCode.InternalServerError);
             }
         }
     }
