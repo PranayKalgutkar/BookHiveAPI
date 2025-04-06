@@ -18,5 +18,13 @@
   "GetBooksByFilter": {
     "Type": "Function",
     "Query": "SELECT * FROM public.get_books_by_filter(@p_search_text::TEXT, @p_title::TEXT, @p_author::TEXT, @p_genre::TEXT, @p_status::TEXT, @p_sort_column::TEXT, @p_sort_order::TEXT, @p_page_index::INT, @p_page_size::INT)"
+  },
+  "AddBookToCart": {
+    "Type": "Function",
+    "Query": "SELECT add_book_to_cart(@p_user_id, @p_book_id) AS result"
+  },
+  "SchedulePickup": {
+    "Type": "Function",
+    "Query": "SELECT schedule_borrow_request(@p_user_id, @p_scheduled_on) AS result"
   }
 }

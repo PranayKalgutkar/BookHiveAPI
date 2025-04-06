@@ -37,6 +37,9 @@ builder.Services.AddSingleton(new QueryHelper(dbQueryFullPath));
 builder.Services.AddScoped<DbConnectionHelper>();
 builder.Services.AddScoped<IInventoryRepo, InventoryRepo>();
 builder.Services.AddScoped<IInventoryDAL, InventoryDAL>();
+
+builder.Services.AddScoped<ICartRepo, CartRepo>();
+builder.Services.AddScoped<ICartDAL, CartDAL>();
 builder.Services.AddSingleton<ApiResponseHelper>();
 
 // 🔹 Enable Swagger
